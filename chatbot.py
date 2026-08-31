@@ -1,18 +1,39 @@
 import random 
 greetings = [ "Hey! How can I help you today?",  "Hi there! What can I do for you?", "Nice to meet you! What's up!" , " Hello" ]
 
-Goodbye = [ "Goodbye" , "Nice meeting you, goodbye", "bye there" ] 
-Weather = [ "weather" , "forecast" ]
-Help = [ "Help" , "Please suuport ", "SOS " ] 
+goodbye = [ "Goodbye" , "Nice meeting you, goodbye", "bye there" ] 
+weather = [ "I'm not connected to a weather service yet, so I can't give you a real forecast." , "I can't check live weather yet, but you can look outside!" , "I don't have access to live weather data yet, but I hope it's nice outside!" ]
+help = [ "Sure Buddy! I'm here to help. You can ask me about the weather, request a fun fact, or just say hello!" , "I am here to help, tell me what do you need ", "SOS " ] 
+facts = [ " The dot over the lowercase letter i or j is called a tittle. " , " Bananas are botanically classified as berries, but strawberries are not." ,  "Wombat feces are cube-shaped, which keeps the droppings from rolling away." , "Honey never spoils, and edible 3,000-year-old honey has been found in Egyptian tombs." , "Sloths can hold their breath longer than dolphins, lasting up to 40 minutes underwater." ] 
 
-Random Fact = [ "The dot over the lowercase letter "i" or "j" is called a tittle." , "Bananas are botanically classified as berries, but strawberries are not.", "Wombat feces are cube-shaped, which keeps the droppings from rolling away." , "Honey never spoils, and edible 3,000-year-old honey has been found in Egyptian tombs." , "Sloths can hold their breath longer than dolphins, lasting up to 40 minutes underwater." ] 
 
-random.choice(greetings)
+name = input(" Bot: What's your name?", \n ," You:" )
+print(" Nice to meet you" , name ,"!!!")
+while True: 
 user_input = input( "You :" )
-user_input = user_input.lower()
+user_input = user_input.lower().strip()
 
 if "hello" in user_input or "hi" in user_input:
-    print("Bot:", random.choice(greetings))
+    print("Bot:", random.choice(greetings) , name )
+
+elif "weather" in user_input or "forecast" in user_input:
+    print("Bot:", random.choice(weather) , name)
+
+elif "help" in user_input or "SOS" in user_input:
+    print("Bot:", random.choice(help), name)
+
+elif "fact" in user_input: 
+    print("Bot:", random.choice(facts), name )
+    
+elif "Bye" in user_input or "Goodbye" in user_input:
+    print("Bot:", random.choice(Goodbye) , name )
+     break 
+
+elif user_input == "":
+    print("Bot: Please type something so I can respond!")
+    continue
+else:
+    print( "Bot: I don't understand. Try asking for HELP SOS " , name )
 
 
 
