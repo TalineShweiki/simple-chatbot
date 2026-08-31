@@ -1,5 +1,10 @@
 import random 
+import pyjokes
+import requests 
+import os
+
 greetings = [ "Hey! How can I help you today?",  "Hi there! What can I do for you?", "Nice to meet you! What's up!" , " Hello" ]
+
 
 goodbye = [ "Goodbye" , "Nice meeting you, goodbye", "bye there" ] 
 weather = [ "I'm not connected to a weather service yet, so I can't give you a real forecast." , "I can't check live weather yet, but you can look outside!" , "I don't have access to live weather data yet, but I hope it's nice outside!" ]
@@ -17,6 +22,7 @@ if "hello" in user_input or "hi" in user_input:
     print("Bot:", random.choice(greetings) , name )
 
 elif "weather" in user_input or "forecast" in user_input:
+    city = input("Bot: What city are you in?\nYou: ")
     print("Bot:", random.choice(weather) , name)
 
 elif "help" in user_input or "SOS" in user_input:
@@ -32,6 +38,10 @@ elif "Bye" in user_input or "Goodbye" in user_input:
 elif user_input == "":
     print("Bot: Please type something so I can respond!")
     continue
+
+elif "joke" in user_input:
+    print("Bot:", pyjokes.get_joke())
+    
 else:
     print( "Bot: I don't understand. Try asking for HELP SOS " , name )
 
