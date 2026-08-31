@@ -2,10 +2,13 @@ import random
 import pyjokes
 import requests 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
 greetings = [ "Hey! How can I help you today?",  "Hi there! What can I do for you?", "Nice to meet you! What's up!" , " Hello" ]
-
-
 goodbye = [ "Goodbye" , "Nice meeting you, goodbye", "bye there" ] 
 weather = [ "I'm not connected to a weather service yet, so I can't give you a real forecast." , "I can't check live weather yet, but you can look outside!" , "I don't have access to live weather data yet, but I hope it's nice outside!" ]
 help = [ "Sure Buddy! I'm here to help. You can ask me about the weather, request a fun fact, or just say hello!" , "I am here to help, tell me what do you need ", "SOS " ] 
