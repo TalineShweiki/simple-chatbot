@@ -17,6 +17,31 @@ facts = [ " The dot over the lowercase letter i or j is called a tittle. " , " B
 
 name = input(" Bot: What's your name?", \n ," You:" )
 print(" Nice to meet you" , name ,"!!!")
+
+def get_weather(city):
+    url = "https://api.openweathermap.org/data/2.5/weather"
+
+    params = {
+        "q": city,
+        "appid": API_KEY,
+        "units": "metric" }
+
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+
+        temperature = data["main"]["temp"]
+        description = data["weather"][0]["description"]
+
+        return f"The weather in {city} is {temperature}°C with {description}."
+
+    elif response.status_code == 404:
+        return "I couldn't find that city. Please check the spelling."
+
+    else:
+        return "Sorry, I couldn't get the weather right now."
+        
 while True: 
 user_input = input( "You :" )
 user_input = user_input.lower().strip()
