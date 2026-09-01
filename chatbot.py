@@ -15,7 +15,7 @@ help = [ "Sure Buddy! I'm here to help. You can ask me about the weather, reques
 facts = [ " The dot over the lowercase letter i or j is called a tittle. " , " Bananas are botanically classified as berries, but strawberries are not." ,  "Wombat feces are cube-shaped, which keeps the droppings from rolling away." , "Honey never spoils, and edible 3,000-year-old honey has been found in Egyptian tombs." , "Sloths can hold their breath longer than dolphins, lasting up to 40 minutes underwater." ] 
 
 
-name = input(" Bot: What's your name?", \n ," You:" )
+name = input(" Bot: What's your name? \n You:" )
 print(" Nice to meet you" , name ,"!!!")
 
 def get_weather(city):
@@ -43,35 +43,41 @@ def get_weather(city):
         return "Sorry, I couldn't get the weather right now."
         
 while True: 
-user_input = input( "You :" )
-user_input = user_input.lower().strip()
+    user_input = input( "You :" )
+    user_input = user_input.lower().strip()
 
-if "hello" in user_input or "hi" in user_input:
-    print("Bot:", random.choice(greetings) , name )
+    if user_input == "":
+        print("Bot: Please type something so I can respond!")
+        continue
 
-elif "weather" in user_input or "forecast" in user_input:
+    elif "hello" in user_input or "hi" in user_input:
+        print("Bot:", random.choice(greetings) , name )
+
+    elif "weather" in user_input or "forecast" in user_input:
     city = input("Bot: What city are you in?\nYou: ")
-    print("Bot:", random.choice(weather) , name)
+        if city == "":
+            print("Bot: Please enter a city.")
+            continue
 
-elif "help" in user_input or "SOS" in user_input:
-    print("Bot:", random.choice(help), name)
+    print("Bot:", get_weather(city), name) 
+   
 
-elif "fact" in user_input: 
-    print("Bot:", random.choice(facts), name )
+    elif "help" in user_input or "sos" in user_input:
+        print("Bot:", random.choice(help), name)
+
+    elif "fact" in user_input: 
+        print("Bot:", random.choice(facts), name )
     
-elif "Bye" in user_input or "Goodbye" in user_input:
-    print("Bot:", random.choice(Goodbye) , name )
-     break 
+    elif "bye" in user_input or "goodbye" in user_input:
+        print("Bot:", random.choice(goodbye) , name )
+        break 
 
-elif user_input == "":
-    print("Bot: Please type something so I can respond!")
-    continue
 
-elif "joke" in user_input:
-    print("Bot:", pyjokes.get_joke())
-    
-else:
-    print( "Bot: I don't understand. Try asking for HELP SOS " , name )
+    elif "joke" in user_input:
+        print("Bot:", pyjokes.get_joke())
+        
+    else:
+        print( "Bot: I don't understand. Try asking for HELP SOS " , name )
 
 
 
