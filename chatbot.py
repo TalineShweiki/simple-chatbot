@@ -41,14 +41,20 @@ def get_weather(city):
 
     else:
         return "Sorry, I couldn't get the weather right now."
-        
+
+message_count = 0
+
 while True: 
+    message_count += 1
     user_input = input( "You :" )
     user_input = user_input.lower().strip()
     
     if user_input == "":
         print("Bot: Please type something so I can respond!")
         continue
+
+    elif "count" in user_input:
+        print(f"Bot: You've sent {message_count} messages so far, {name}!")
 
     elif "hello" in user_input or "hi" in user_input:
         print("Bot:", random.choice(greetings) , name )
