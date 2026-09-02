@@ -54,7 +54,7 @@ while True:
         continue
 
     elif "count" in user_input:
-        print(f"Bot: You've sent {message_count} messages so far, {name}!")
+        print("Bot: You've sent", message_count, "messages so far,", name, "!")
 
     elif "hello" in user_input or "hi" in user_input:
         print("Bot:", random.choice(greetings) , name )
